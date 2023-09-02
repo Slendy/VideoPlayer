@@ -1,0 +1,40 @@
+<htnl lang="en">
+<head>
+  <title>Video player</title>
+  <style>
+html {
+  font-family: Arial;
+}
+video {
+    width: 100%;
+    min-height: 480px;
+    height: calc((9 / 16) * 100vw);
+    max-height: calc(100vh - 169px);
+}
+  </style>
+</head>
+<body>
+  <h1>Video Player</h1>
+  <div>
+    <form onsubmit="event.preventDefault(); return updateVideo();">
+      <input type="text" id="video-link">
+      <input type="submit">
+    </form>
+  </div>
+  <hr>
+  <div class="video-container">
+    <video id="video-player" controls>
+      <source id="video-source" src="" type="video/mp4">
+    </video>
+  </div>
+</body>
+<script>
+function updateVideo(){
+  let videoPlayer = document.getElementById("video-player");
+  document.getElementById("video-source").src = document.getElementById("video-link").value;
+  videoPlayer.load();
+  videoPlayer.play();
+  return false;
+}
+</script>
+</html>
